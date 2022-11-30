@@ -5,45 +5,70 @@ function generatePassword() {
   var special = "!#$%&()*+,-./:;<=>?@[^_`{|}~";
   var abcs = "mnbvcxzlkjhgfdsapoiuytrewq";
   var numbers = "0123456789";
+
+  var passlength = prompt("how long will your password be?");
+  passlength = parseInt(passlength);
+
+  if(isNaN(passlength) || passlength < 8 || passlength > 128){
+    alert('Please enter a number between 8 and 128');
+    return generatePassword();
+  }
+
   var isUppercase = confirm('use uppercase?');
   var isLowercase = confirm("use lowercase?");
   var isSpecial = confirm("use special characters?");
   var isNumber = confirm("use numbers?");
-  var passlength = prompt("how long will your password be?");
-  var password = {
-    outcome:["","","",""],
-  };
+
+
+  var allowedChars = "";
+  // var password = {
+  //   outcome:["","","",""],
+  // };
 
   if (isUppercase){
-    password.outcome[0]= abcs.substring(Math.floor(Math.random() * numbers.length),Math.floor(Math.random() * numbers.length));
-    console.log(password.outcome[0].toUpperCase());
-
-  }else{
+    //password.outcome[0]= abcs.substring(Math.floor(Math.random() * 1),Math.floor(Math.random() * 10));
+    //console.log(password.outcome[0].toUpperCase());
+    allowedChars += abcs.toUpperCase();
+  }
+  //else{
     
-  }
+  // }
   if (isLowercase) {
-    password.outcome[1]= abcs.substring(Math.floor(Math.random() * numbers.length),Math.floor(Math.random() * numbers.length));
-  
-    console.log(password.outcome[1]);
-  }else{
-
+    //password.outcome[1]= abcs.substring(Math.floor(Math.random() * numbers.length),Math.floor(Math.random() * numbers.length));
+    //console.log(password.outcome[1]);
+    allowedChars += abcs.toLowerCase();
   }
+  //else{
+
+  // }
   if (isSpecial) {
-    password.outcome[2]= special.substring(Math.floor(Math.random() * numbers.length),Math.floor(Math.random() * numbers.length));
-    console.log(password.outcome[2]);
-  }else{
-
+  //   password.outcome[2]= special.substring(Math.floor(Math.random() * numbers.length),Math.floor(Math.random() * numbers.length));
+  //   console.log(password.outcome[2]);
+    allowedChars += special;
   }
+  //else{
+
+  // }
   if (isNumber) {
-    password.outcome[3] = Math.floor(Math.random() * abcs.length);
-    console.log(password.outcome[3]);
-  }else{
-
+  //   password.outcome[3] = Math.floor(Math.random() * abcs.length);
+  //   console.log(password.outcome[3]);
+    allowedChars += numbers;
   }
-  var finalPassword = password.outcome.join("");
 
-  return password.outcome.join("");
+  // allowedChars
+  var pass = "";
+  for(var i = 0; i < passlength; i++){
+    var randomIndex = Math.floor(Math.random()*allowedChars.length);
+    pass = pass + allowedChars[randomIndex];
+  }
 
+  //else{
+
+  // }
+  // var finalPassword = password.outcome.join("");
+  
+  // return password.outcome.join("");
+  return pass;
 }
 // Write password to the #password input
 function writePassword() {
