@@ -17,21 +17,29 @@ function generatePassword() {
     outcome= abcs.substring(Math.floor(Math.random() * numbers.length),Math.floor(Math.random() * numbers.length));
     console.log(outcome.toUpperCase());
 
+  }else{
+    
   }
   if (isLowercase) {
     outcome= abcs.substring(Math.floor(Math.random() * numbers.length),Math.floor(Math.random() * numbers.length));
   
     console.log(outcome);
+  }else{
+
   }
   if (isSpecial) {
     outcome= special.substring(Math.floor(Math.random() * numbers.length),Math.floor(Math.random() * numbers.length));
     console.log(outcome);
+  }else{
+
   }
   if (isNumber) {
     var number = Math.floor(Math.random() * abcs.length);
     console.log(number);
+  }else{
+
   }
-  return "";
+  //return "";
 }
 // Write password to the #password input
 function writePassword() {
