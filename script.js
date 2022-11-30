@@ -2,26 +2,34 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
-  var possibleSpecial = "!#$%&()*+,-./:;<=>?@[^_`{|}~";
-  var letters = "abcdefghijklmnopqrstuvwxyz";
+  var special = "!#$%&()*+,-./:;<=>?@[^_`{|}~";
+  var abcs = "mnbvcxzlkjhgfdsapoiuytrewq";
   var numbers = "0123456789";
-  var upletters = letters.toUpperCase();
-  var isUppercase = confirm('use uppercase');
-  var isLowercase = confirm("use lowercase");
-  var isSpecial = confirm("use special characters");
-  var isNumber = confirm("use numbers");
+  var isUppercase = confirm('use uppercase?');
+  var isLowercase = confirm("use lowercase?");
+  var isSpecial = confirm("use special characters?");
+  var isNumber = confirm("use numbers?");
+  var passwordLength = 10;
+  var outcome= "";
+  var password = "";
 
-  if (isUppercase) {
-    console.log("uppercase");
+  if (isUppercase){
+    outcome= abcs.substring(Math.floor(Math.random() * numbers.length),Math.floor(Math.random() * numbers.length));
+    console.log(outcome.toUpperCase());
+
   }
   if (isLowercase) {
-    console.log("lowercase");
+    outcome= abcs.substring(Math.floor(Math.random() * numbers.length),Math.floor(Math.random() * numbers.length));
+  
+    console.log(outcome);
   }
   if (isSpecial) {
-    console.log("special");
+    outcome= special.substring(Math.floor(Math.random() * numbers.length),Math.floor(Math.random() * numbers.length));
+    console.log(outcome);
   }
   if (isNumber) {
-    console.log("number");
+    var number = Math.floor(Math.random() * abcs.length);
+    console.log(number);
   }
   return "";
 }
