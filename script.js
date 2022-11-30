@@ -9,6 +9,7 @@ function generatePassword() {
   var isLowercase = confirm("use lowercase?");
   var isSpecial = confirm("use special characters?");
   var isNumber = confirm("use numbers?");
+  var passlength = prompt("how long will your password be?");
   var password = {
     outcome:["","","",""],
   };
@@ -39,7 +40,10 @@ function generatePassword() {
   }else{
 
   }
-  //return "";
+  var finalPassword = password.outcome.join("");
+
+  return password.outcome.join("");
+
 }
 // Write password to the #password input
 function writePassword() {
