@@ -21,53 +21,35 @@ function generatePassword() {
 
 
   var allowedChars = "";
-  // var password = {
-  //   outcome:["","","",""],
-  // };
+ 
 
   if (isUppercase){
-    //password.outcome[0]= abcs.substring(Math.floor(Math.random() * 1),Math.floor(Math.random() * 10));
-    //console.log(password.outcome[0].toUpperCase());
     allowedChars += abcs.toUpperCase();
   }
-  //else{
-    
-  // }
+ 
   if (isLowercase) {
-    //password.outcome[1]= abcs.substring(Math.floor(Math.random() * numbers.length),Math.floor(Math.random() * numbers.length));
-    //console.log(password.outcome[1]);
     allowedChars += abcs.toLowerCase();
   }
-  //else{
 
-  // }
   if (isSpecial) {
-  //   password.outcome[2]= special.substring(Math.floor(Math.random() * numbers.length),Math.floor(Math.random() * numbers.length));
-  //   console.log(password.outcome[2]);
     allowedChars += special;
   }
-  //else{
 
-  // }
   if (isNumber) {
-  //   password.outcome[3] = Math.floor(Math.random() * abcs.length);
-  //   console.log(password.outcome[3]);
     allowedChars += numbers;
   }
 
-  // allowedChars
+if(allowedChars.length > 0){
+
   var pass = "";
   for(var i = 0; i < passlength; i++){
     var randomIndex = Math.floor(Math.random()*allowedChars.length);
     pass = pass + allowedChars[randomIndex];
   }
-
-  //else{
-
-  // }
-  // var finalPassword = password.outcome.join("");
+}else{alert( "Select options to generate password");
+    return generatePassword();
+}
   
-  // return password.outcome.join("");
   return pass;
 }
 // Write password to the #password input
