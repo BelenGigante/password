@@ -13,7 +13,7 @@ The code includes an alert message when the user doesn't enter a number or enter
 
 ## Link
 
-[Belen's password](https://belengigante.github.io/password/) 
+[Belen's password web](https://belengigante.github.io/password/) 
 
 ## Visuals
 

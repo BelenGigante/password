@@ -5,11 +5,12 @@ function generatePassword() {
   var special = "!#$%&()*+,-./:;<=>?@[^_`{|}~";
   var abcs = "mnbvcxzlkjhgfdsapoiuytrewq";
   var numbers = "0123456789";
+  var check = "";
+  var pass= "";
+  var passLength = prompt("how long will your password be?");
+  passLength = parseInt(passLength);
 
-  var passlength = prompt("how long will your password be?");
-  passlength = parseInt(passlength);
-
-  if(isNaN(passlength) || passlength < 8 || passlength > 128){
+  if(isNaN(passLength) || passLength < 8 || passLength > 128){
     alert('Please enter a number between 8 and 128');
     return generatePassword();
   }
@@ -18,40 +19,52 @@ function generatePassword() {
   var isLowercase = confirm("use lowercase?");
   var isSpecial = confirm("use special characters?");
   var isNumber = confirm("use numbers?");
-
+  var any="";
 
   var allowedChars = "";
  
 
   if (isUppercase){
     allowedChars += abcs.toUpperCase();
+    any = Math.floor(Math.random() * passLength);
+    check += allowedChars[any];
+
   }
  
   if (isLowercase) {
-    allowedChars += abcs.toLowerCase();
+    allowedChars += abcs;
+    any = Math.floor(Math.random() * passLength);
+    check += abcs[any];
+
   }
 
   if (isSpecial) {
     allowedChars += special;
+    any = Math.floor(Math.random() * passLength);
+    check += special[any];
+
   }
 
   if (isNumber) {
     allowedChars += numbers;
+    any = Math.floor(Math.random() * passLength);
+    check += numbers[any];
+
   }
 
 if(allowedChars.length > 0){
 
-  var pass = "";
-  for(var i = 0; i < passlength; i++){
+  for(var i = 0; i < (passLength); i++){
     var randomIndex = Math.floor(Math.random()*allowedChars.length);
     pass = pass + allowedChars[randomIndex];
   }
+  return pass.substring(check.length).concat(check);
+
+
 }else{alert( "Select options to generate password");
     return generatePassword();
 }
-  
-  return pass;
-}
+  }
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
